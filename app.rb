@@ -5,59 +5,68 @@ get("/") do
   erb(:home)
 end
 
-def move_name(move)
-  if move == 0
-    return "rock"
-  elsif move == 1
-    return "paper"
+def label_move(move_code)
+  if move_code == 0
+    "rock"
+  elsif move_code == 1
+    "paper"
   else
-    return "scissors"
+    "scissors"
   end
 end
 
+# Rock
 get("/rock") do
-  our_move = 0
-  @our_move_text = move_name(our_move)
-  their_move = rand(3)
-  @their_move_text = move_name(their_move)
-  if their_move == 1
-    @outcome = 1
-  elsif their_move == 0
-    @outcome = -1
+  my_move = 0
+  @my_move_text = label_move(my_move)
+  
+  opponent_move = rand(3)
+  @opponent_move_text = label_move(opponent_move)
+
+  if opponent_move == 1
+    @result = 1
+  elsif opponent_move == 0
+    @result = -1
   else
-   @outcome = 0
+    @result = 0
   end
 
   erb(:game)
 end
 
+# Paper
 get("/paper") do
-  our_move = 1
-  @our_move_text = move_name(our_move)
-  their_move = rand(3)
-  @their_move_text = move_name(their_move)
-  if their_move == 0
-    @outcome = 0
-  elsif their_move == 2
-    @outcome = 1
+  my_move = 1
+  @my_move_text = label_move(my_move)
+  
+  opponent_move = rand(3)
+  @opponent_move_text = label_move(opponent_move)
+
+  if opponent_move == 0
+    @result = 0
+  elsif opponent_move == 2
+    @result = 1
   else
-   @outcome = -1
+    @result = -1
   end
 
   erb(:game)
 end
 
+# Scissors
 get("/scissors") do
-  our_move = 2
-  @our_move_text = move_name(our_move)
-  their_move = rand(3)
-  @their_move_text = move_name(their_move)
-  if their_move == 0
-    @outcome = 1
-  elsif their_move == 1
-    @outcome = 0
+  my_move = 2
+  @my_move_text = label_move(my_move)
+  
+  opponent_move = rand(3)
+  @opponent_move_text = label_move(opponent_move)
+
+  if opponent_move == 0
+    @result = 1
+  elsif opponent_move == 1
+    @result = 0
   else
-   @outcome = -1
+    @result = -1
   end
 
   erb(:game)

@@ -1,5 +1,3 @@
-<!-- /views/game.erb -->
-
 <!DOCTYPE html>
 <html>
   <head>
@@ -8,17 +6,17 @@
     
   <body>
     <h2>
-      We played <%=@our_move_text%>!
+      We played <%= @my_move_text %>!
     </h2>
 
     <h2>
-      They played <%=@their_move_text%>!
+      They played <%= @opponent_move_text %>!
     </h2>
 
     <h2>
-      <% if @outcome == 0%>
+      <% if @result == 0 %>
         We won!
-      <% elsif @outcome == 1%>
+      <% elsif @result == 1 %>
         We lost!
       <% else %>
         We tied!
@@ -27,6 +25,6 @@
 
     <div>
       <div><a href="/">Rules</a></div>
-    <div>
+    </div>
   </body>
 </html>
